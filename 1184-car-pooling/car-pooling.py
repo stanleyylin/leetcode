@@ -1,9 +1,9 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
         timestamp = [0] * 1001
-        for num, start, end in trips:
-            timestamp[start] += num
-            timestamp[end] += -num
+        for trip in trips:
+            timestamp[trip[1]] += trip[0]
+            timestamp[trip[2]] += -trip[0]
         
         used_capacity = 0
         for passenger_change in timestamp:
